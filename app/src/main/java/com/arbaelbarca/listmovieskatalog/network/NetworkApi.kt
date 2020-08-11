@@ -1,7 +1,9 @@
 package com.arbaelbarca.listmovieskatalog.network
 
 import com.arbaelbarca.listmovieskatalog.utils.Constants
+import okhttp3.Interceptor
 import okhttp3.OkHttpClient
+import okhttp3.Response
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory
@@ -9,8 +11,11 @@ import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 
 class NetworkApi private constructor() {
+
     val api: ApiServices
     private val credentials: String? = null
+
+
 
     init {
         val retrofit = Retrofit.Builder()
@@ -34,7 +39,7 @@ class NetworkApi private constructor() {
                     .addInterceptor { chain ->
                         val request = chain.request()
                         val authenticatedRequest = request.newBuilder()
-                                .header("Authorization", "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJkY2Y1NzYzNjkxYTJhOTYwZDJkMjQyMDk3Y2RiMWY2YyIsInN1YiI6IjU5ODU1NDEzOTI1MTQxNDM4NzAxOGMyZSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.Pg0vpPU8iOhVHW3g7ZUEOkA3cMp9JEwMpx9AhD-92Tk").build()
+                                .header("Authorization", "Bearer tokenBearer").build()// tokenbearre = disi dengan token bearernyaa
                         chain.proceed(authenticatedRequest)
                     }
                     .readTimeout(15, TimeUnit.SECONDS)
@@ -56,4 +61,6 @@ class NetworkApi private constructor() {
                 return networkApi!!
             }
     }
+
+
 }

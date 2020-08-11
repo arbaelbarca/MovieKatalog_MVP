@@ -30,6 +30,7 @@ class ResultsItem : Parcelable {
     @SerializedName("title")
     var title: String? = null
 
+
     @ColumnInfo(name = "poster_path")
     @SerializedName("poster_path")
     var posterPath: String? = null
@@ -120,7 +121,6 @@ class ResultsItem : Parcelable {
         parcel.writeByte((if (isAdult) 1 else 0).toByte())
         parcel.writeInt(voteCount)
     }
-
 
 
     companion object CREATOR : Parcelable.Creator<ResultsItem> {

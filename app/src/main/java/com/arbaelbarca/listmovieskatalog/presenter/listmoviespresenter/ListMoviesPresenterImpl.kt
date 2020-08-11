@@ -46,7 +46,7 @@ class ListMoviesPresenterImpl(private val context: Context) : MainContract.GetNo
 
                     override fun onNext(responseMoviesList: ResponseMoviesList) {
                         if (responseMoviesList.results != null) {
-                            onFinishedListener.onFinished(responseMoviesList.results)
+                            onFinishedListener.onFinished(responseMoviesList.results!!)
                             Log.d("responEror", " success ")
 
                         }

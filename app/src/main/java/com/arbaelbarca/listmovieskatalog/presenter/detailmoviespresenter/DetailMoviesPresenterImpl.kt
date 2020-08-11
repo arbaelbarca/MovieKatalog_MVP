@@ -56,7 +56,7 @@ class DetailMoviesPresenterImpl(private val context: Context) : DetailMoviesView
 
                     override fun onNext(responseReviewMovies: ResponseReviewMovies) {
                         if (responseReviewMovies.results != null) {
-                            onFinishedListener.setDataReview(responseReviewMovies.results)
+                            onFinishedListener.setDataReview(responseReviewMovies.results!!)
                         }
                     }
                 })
