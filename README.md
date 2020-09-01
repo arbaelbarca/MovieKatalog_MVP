@@ -11,5 +11,5 @@ This application only displays the movie list and movie details and review revie
 
 Screenshoot Application : 
 
-![List Movie](https://github.com/arbaelbarca/MovieKatalog_MVP/blob/master/Screenshoot/list%20movie.PNG?raw=true)
-![Detail Movie](https://github.com/arbaelbarca/MovieKatalog_MVP/blob/master/Screenshoot/detail%20movie.PNG?raw=true)
+![List Movie](https://github.com/arbaelbarca/MovieKatalog_MVP/blob/master/Screenshoot/list%20movie.PNG?raw=true&s=100)
+![Detail Movie](https://github.com/arbaelbarca/MovieKatalog_MVP/blob/master/Screenshoot/detail%20movie.PNG?raw=true&s=100)
