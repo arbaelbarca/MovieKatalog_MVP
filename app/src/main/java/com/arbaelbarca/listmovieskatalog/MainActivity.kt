@@ -36,10 +36,13 @@ class MainActivity : BaseActivity(), MainContract.MainView, PopupMenu.OnMenuItem
     private lateinit var popupMenu: PopupMenu
 
 
+    companion object {
+        var favoriteDatabase: FavoriteDatabase? = null
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        ButterKnife.bind(this)
 
         initial()
 
@@ -117,11 +120,11 @@ class MainActivity : BaseActivity(), MainContract.MainView, PopupMenu.OnMenuItem
 
 
     override fun onMenuItemClick(menuItem: MenuItem): Boolean {
-        when {
-            menuItem.itemId == R.id.ic_upcoming -> getListType(getString(R.string.text_upcoming_new))
-            menuItem.itemId == R.id.ic_nowplaying -> getListType(getString(R.string.text_nowplaying_api))
-            menuItem.itemId == R.id.ic_popular -> getListType(getString(R.string.text_popular_api))
-            menuItem.itemId == R.id.ic_toprated -> getListType(getString(R.string.text_toprated_api))
+        when (menuItem.itemId) {
+            R.id.ic_upcoming -> getListType(getString(R.string.text_upcoming_new))
+            R.id.ic_nowplaying -> getListType(getString(R.string.text_nowplaying_api))
+            R.id.ic_popular -> getListType(getString(R.string.text_popular_api))
+            R.id.ic_toprated -> getListType(getString(R.string.text_toprated_api))
         }
         return true
     }
@@ -140,7 +143,4 @@ class MainActivity : BaseActivity(), MainContract.MainView, PopupMenu.OnMenuItem
         return super.onOptionsItemSelected(item)
     }
 
-    companion object {
-        lateinit var favoriteDatabase: FavoriteDatabase
-    }
 }

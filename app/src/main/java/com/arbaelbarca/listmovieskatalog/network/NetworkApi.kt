@@ -39,7 +39,7 @@ class NetworkApi private constructor() {
                     .addInterceptor { chain ->
                         val request = chain.request()
                         val authenticatedRequest = request.newBuilder()
-                                .header("Authorization", "Bearer tokenBearer").build()// tokenbearre = disi dengan token bearernyaa
+                                .header("Authorization", "Bearer tokenBearer").build()// tokenbearre = disi dengan token bearernyaa dari db movie
                         chain.proceed(authenticatedRequest)
                     }
                     .readTimeout(15, TimeUnit.SECONDS)

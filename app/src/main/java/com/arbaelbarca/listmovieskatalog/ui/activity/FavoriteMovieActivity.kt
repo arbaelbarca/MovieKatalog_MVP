@@ -42,7 +42,7 @@ class FavoriteMovieActivity : BaseActivity() {
         rvListFavoriteMovies.setHasFixedSize(true)
         rvListFavoriteMovies.adapter = adapterFavoriteMovies
 
-        resultsItems = MainActivity.favoriteDatabase.favoriteDao().favoriteData
+        resultsItems = MainActivity.favoriteDatabase?.favoriteDao()?.favoriteData!!
 
         if (resultsItems.isNotEmpty()) {
             progressBar.visibility = View.GONE

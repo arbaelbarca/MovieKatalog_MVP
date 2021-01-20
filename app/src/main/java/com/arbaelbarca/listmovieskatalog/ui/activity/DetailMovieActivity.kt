@@ -120,22 +120,22 @@ class DetailMovieActivity : BaseActivity(), DetailMoviesView.MainView {
         favoriteList.backdropPath = resultsItem.backdropPath
         favoriteList.voteAverage = resultsItem.voteAverage
 
-        if (MainActivity.favoriteDatabase.favoriteDao().isFavorite(favoriteList.id) != 1) {
+        if (MainActivity.favoriteDatabase?.favoriteDao()?.isFavorite(favoriteList.id) != 1) {
             imgLoveFav!!.setImageResource(R.drawable.ic_love_red)
             btnFloatFav!!.setImageResource(R.drawable.ic_love_red)
-            MainActivity.favoriteDatabase.favoriteDao().addData(favoriteList)
+            MainActivity.favoriteDatabase?.favoriteDao()?.addData(favoriteList)
             Snackbar.make(rlDetail!!, "Tersimpan ke favorite", Snackbar.LENGTH_LONG).show()
         } else {
             imgLoveFav!!.setImageResource(R.drawable.ic_love_white)
             btnFloatFav!!.setImageResource(R.drawable.ic_love_white)
-            MainActivity.favoriteDatabase.favoriteDao().delete(favoriteList)
+            MainActivity.favoriteDatabase!!.favoriteDao().delete(favoriteList)
             Snackbar.make(rlDetail!!, "Batalkan Favorite", Snackbar.LENGTH_LONG).show()
         }
     }
 
     internal fun statusFav() {
         if (itemsItem != null)
-            if (MainActivity.favoriteDatabase.favoriteDao().isFavorite(itemsItem!!.id) == 1) {
+            if (MainActivity.favoriteDatabase?.favoriteDao()?.isFavorite(itemsItem!!.id) == 1) {
                 imgLoveFav?.setImageResource(R.drawable.ic_love_red)
                 btnFloatFav?.setImageResource(R.drawable.ic_love_red)
             } else {
@@ -152,14 +152,11 @@ class DetailMovieActivity : BaseActivity(), DetailMoviesView.MainView {
         progressBarRevies?.visibility = View.GONE
     }
 
-    override fun setDataTags(responseDetailMovies: ResponseDetailMovies?) {
-        if (responseDetailMovies != null) {
-            adapterTagsMovies.setGenresItems(responseDetailMovies.genres!!)
-            adapterTagsMovies.notifyDataSetChanged()
-
-        }
-
+    override fun setDataTags(responseDetailMovies: ResponseDetailMovies) {
+        adapterTagsMovies.setGenresItems(responseDetailMovies.genres!!)
+        adapterTagsMovies.notifyDataSetChanged()
     }
+
 
     override fun setDataReview(resultsItemArrayList: ArrayList<ResultsItemReviews>) {
         if (resultsItemArrayList.size > 0) {
